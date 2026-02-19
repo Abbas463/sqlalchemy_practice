@@ -28,6 +28,15 @@ Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-person = Person(1234, "Abbas", "Hilal", "M", 19)
-session.add(person)
-session.commit()
+# person = Person(1234, "Abbas", "Hilal", "M", 19)
+# person_1 = Person(1235, "Talha", "Hilal", "M", 14)
+# person_2 = Person(1236, "Sediqullah", "Hilal", "M", 22)
+
+# session.add(person)
+# session.add(person_1)
+# session.add(person_2)
+# session.commit()
+
+result = session.query(Person).filter(Person.firstname == "Abbas")
+for r in result:
+    print(r)
