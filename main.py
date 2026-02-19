@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
-class person(Base):
+class Person(Base):
     __tablename__ = 'people'
     ssn = Column("ssn", Integer, primary_key=True)
     firstname = Column("firstname", String)
@@ -27,3 +27,7 @@ Base.metadata.create_all(bind=engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
+
+person = Person(1234, "Abbas", "Hilal", "M", 19)
+session.add(person)
+session.commit()
