@@ -18,3 +18,12 @@ class person(Base):
         self.lastname = last
         self.gender = gender
         self.age = age
+    
+    def __repr__(self):
+        return f"({self.ssn}) {self.firstname} {self.lastname} ({self.gender}, {self.age})"
+    
+engine = create_engine('sqlite:///mydb.db', echo=True)
+Base.metadata.create_all(bind=engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
